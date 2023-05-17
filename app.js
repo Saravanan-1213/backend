@@ -6,7 +6,6 @@ import * as path from "path";
 import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 
-console.log(process.env.MONGO_URL);
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -77,11 +76,9 @@ io.on("connection", (socket) => {
 const __dirname1 = path.resolve();
 
 if (process.env.Node_env === "production") {
-  app.use(express.static(path.join(__dirname1, "frontend/my-app/build")));
+  app.use(express.static(path.join(__dirname1)));
   app.get("*", (req, res) => {
-    res.sendFile(
-      path.resolve(__dirname1, "frontend", "my-app", "build", "index.html")
-    );
+    res.sendFile(path.resolve(__dirname1));
   });
 } else {
   app.get("/", (req, res) => {
