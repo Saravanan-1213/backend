@@ -22,9 +22,12 @@ app.use(cors());
 dotenv.config({ path: "./.env" });
 
 const MONGO_URL = process.env.MONGO_URL;
-const client = new MongoClient(MONGO_URL); // dail
-await client.connect(); // call
-console.log("Mongo is connected !!!");
+
+const client = new MongoClient(MONGO_URL); // dial
+await client.connect(); // calling
+console.log("Mongo is Connected");
+
+app.use("/user", userRouter);
 
 const PORT = process.env.PORT;
 
