@@ -5,7 +5,7 @@ import cors from "cors";
 import * as path from "path";
 import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
-
+import userRouter from "./routes/user.route.js";
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
