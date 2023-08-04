@@ -1,4 +1,4 @@
-import { client } from "../index.js";
+import { client } from "../app.js";
 import bcrypt from "bcrypt";
 
 // Login
