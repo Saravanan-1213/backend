@@ -6,6 +6,7 @@ import * as path from "path";
 import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 import userRouter from "./routes/user.route.js";
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -20,14 +21,13 @@ const parties = [];
 app.use(express.json());
 app.use(cors());
 dotenv.config({ path: "./.env" });
+app.use("/user", userRouter);
 
 const MONGO_URL = process.env.MONGO_URL;
 
 const client = new MongoClient(MONGO_URL); // dial
 await client.connect(); // calling
 console.log("Mongo is Connected");
-
-app.use("/user", userRouter);
 
 const PORT = process.env.PORT;
 
